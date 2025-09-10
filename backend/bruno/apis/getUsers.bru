@@ -1,0 +1,18 @@
+meta {
+  name: getUsers
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:8000/user?page=0&size=100&orderBy=10&order=DESC
+  body: none
+  auth: none
+}
+
+params:query {
+  page: 0
+  size: 100
+  orderBy: 10
+  order: DESC
+}

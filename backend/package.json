@@ -4,17 +4,24 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
+    "clean": "rm -rf dist",
     "test": "",
-    "dev": "ts-node",
-    "build": "tsc",
+    "dev": "nodemon src/index.ts",
+    "build": "npm run clean && tsc",
     "start": "node dist/index.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "ts-node": "^10.9.2"
+    "@types/chance": "^1.1.7",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.3.1",
+    "chance": "^1.1.13",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
   },
   "dependencies": {
-    "typescript": "^5.9.2"
+    "express": "^5.1.0"
   }
 }
