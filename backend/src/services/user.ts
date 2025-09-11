@@ -1,11 +1,10 @@
-import { getUsers } from "../repositories/user/user";
+import { getUser } from "../repositories/user";
+import { User } from "../repositories/user/types";
 
-export const generateUsers = async (length: number) => {
-  try {
-    const getUsersPromise = Array.from({ length }, () => getUsers());
-    return await Promise.all(getUsersPromise);
-  } catch (error) {
-    console.log("Error generating users:", error);
+export const generateUsers = async (length: number): Promise<User[]> => {
+  if (length <= 0) {
     return [];
   }
+  const userPromises = Array.from({ length }, () => getUser());
+  return Promise.all(userPromises);
 };

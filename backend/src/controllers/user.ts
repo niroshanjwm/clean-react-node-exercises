@@ -1,13 +1,17 @@
 import { Response } from "express";
 import { PaginatedRequest } from "../requests/paginatedRequest";
 import { generateUsers } from "../services/user";
-import { responsSuccess } from "../utils/response";
+import { responseFail, responseSuccess } from "../utils/response";
 
 export const getUsers = async (
   request: PaginatedRequest,
   response: Response
-) => {
-  const { size } = request.pagination;
-  const users = await generateUsers(size);
-  responsSuccess(response, "Users fetched successfully", { users });
+): Promise<void> => {
+  try {
+    const { size } = request.pagination;
+    const users = await generateUsers(size);
+    responseSuccess(response, "Users fetched successfully", { users });
+  } catch (error) {
+    responseFail(response, "Error fetching users", { error });
+  }
 };
